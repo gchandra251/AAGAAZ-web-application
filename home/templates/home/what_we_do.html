@@ -1,0 +1,89 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="hero" style="height: 300px;">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Our Programs</h1>
+                <p>Empowering communities through dedicated action.</p>
+            </div>
+        </div>
+    </header>
+
+<section class="program-section">
+    <h2 class="section-title">Community Programs</h2>
+    <div class="program-grid">
+        <div class="program-card">
+            <div class="program-icon-box bg-purple">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>Self Help Groups (SHG)</h3>
+            <p>Organizing local groups to foster economic independence and mutual support.</p>
+        </div>
+        <div class="program-card">
+            <div class="program-icon-box bg-navy">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <h3>NYKS Collaboration</h3>
+            <p>Working with Nehru Yuva Kendra Sangathan for youth-led community development.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Vocational Training</h2>
+    <div class="program-grid">
+        <div class="program-card">
+            <div class="program-icon-box bg-navy">
+                <i class="fas fa-cut"></i>
+            </div>
+            <h3>Stitching & Tailoring</h3>
+            <p>Learn professional garment making to start your own business.</p>
+        </div>
+        <div class="program-card">
+            <div class="program-icon-box bg-purple">
+                <i class="fas fa-magic"></i>
+            </div>
+            <h3>Beautician Course</h3>
+            <p>Comprehensive training in skin care and hair styling.</p>
+        </div>
+        <div class="program-card">
+            <div class="program-icon-box bg-purple">
+                <i class="fas fa-pencil-ruler"></i>
+            </div>
+            <h3>Dress Designing</h3>
+            <p>Master the art of designing dresses, learn the skill to translate ideas into reality.</p>
+        </div>
+        <div class="program-card">
+            <div class="program-icon-box bg-navy">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3>Henna Art</h3>
+            <p>Learn the traditional and contemporary henna design techniques.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Education & Skills</h2>
+    <div class="program-grid">
+        <div class="program-card">
+            <div class="program-icon-box bg-purple">
+                <i class="fas fa-music"></i>
+            </div>
+            <h3>Cultural Dance</h3>
+            <p>Preserving heritage and building confidence through traditional, contemporary and modern dance forms.</p>
+        </div>
+        <div class="program-card">
+            <div class="program-icon-box bg-navy">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Tuition Classes</h3>
+            <p>Providing quality education through tuitions for student in primary standard</p>
+        </div>
+    </div>
+
+    <div class="enrollment-cta">
+        <p>To have more information about the courses, fees and enrollment process please 
+           <a href="{% url 'contact' %}" class="cta-link">contact us</a>.
+        </p>
+    </div>
+</section>
+{% endblock %}

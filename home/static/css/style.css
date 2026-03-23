@@ -1,0 +1,629 @@
+/* =========================================
+   1. BRAND VARIABLES & FONTS
+   ========================================= */
+:root {
+    /* Colors */
+    --primary-blue: #0d1b2a;
+    --secondary-blue: #1b263b;
+    --accent-gold: #ffd700;
+    --accent-purple: #9932CC;
+    --brand-purple: #800080;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* =========================================
+   2. GLOBAL RESET
+   ========================================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background-color: var(--bg-light); 
+    font-family: var(--font-body);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+h1, h2, h3 { 
+    font-family: var(--font-heading); 
+    color: var(--primary-blue);
+}
+
+/* =========================================
+   3. NAVBAR (Updated to use Variables)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    position: relative;
+    overflow: visible; /* Ensure no weird overlaps are being cut off*/
+}
+
+.nav-links li a {
+    text-decoration: none !important;
+    color: var(--white) !important;
+    background-color: var(--primary-blue);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.nav-links li a:hover {
+    background-color: var(--secondary-blue);
+    transform: translateY(-2px);
+}
+
+.nav-links li a.active {
+    background-color: var(--brand-purple) !important;
+}
+
+/* The Donate Button */
+.navbar .nav-links li a.nav-donate-btn {
+    background-color: var(--accent-gold) !important;
+    color: var(--primary-blue) !important;
+    border: 2px solid var(--accent-gold) !important;
+    text-transform: uppercase;
+    font-weight: 800 !important;
+}
+
+.navbar .nav-links li a.nav-donate-btn:hover {
+    background-color: var(--white) !important;
+    color: var(--brand-purple) !important;
+    border: 2px solid var(--brand-purple) !important;
+}
+
+/* =========================================
+   4. COMPONENTS (Hero, Cards, Buttons)
+   ========================================= */
+.hero {
+    height: 500px;
+    background-color: var(--text-muted); 
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    position: relative;
+}
+
+.hero-content { color: var(--white); max-width: 600px; z-index: 2; }
+.hero-content h1 { font-size: 3rem; margin-bottom: 20px; color: var(--white); }
+
+.btn-primary {
+    background-color: var(--accent-purple);
+    color: var(--white);
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.activities { display: flex; justify-content: center; gap: 30px; padding: 50px; }
+
+.card {
+    background: var(--white);
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   5. PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* What We Do */
+.program-section { padding: 50px 80px; }
+.section-title {
+    color: var(--brand-purple);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-left: 5px solid var(--primary-blue);
+    padding-left: 15px;
+}
+.program-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.program-card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-purple);
+}
+
+/* =========================================
+   5. PAGE SPECIFIC STYLES (REFINED)
+   ========================================= */
+
+/* --- What We Do (Keep this part) --- */
+.program-section { padding: 50px 80px; }
+.section-title {
+    color: var(--brand-purple);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-left: 5px solid var(--primary-blue);
+    padding-left: 15px;
+}
+.program-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.program-card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-purple);
+}
+
+/* --- EVERYTHING BELOW THIS REPLACES THE OLD CONTACT & FILE UPLOAD BLOCKS --- */
+
+.contact-container { 
+    display: flex; 
+    padding: 80px 10%; 
+    gap: 60px; 
+    align-items: flex-start;
+}
+
+.contact-info { 
+    flex: 1; 
+}
+
+.contact-form { 
+    flex: 1.8; /* Makes the form wider and more professional */
+    background: var(--white); 
+    padding: 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* File Upload Specific Styling */
+.form-group input[type="file"] {
+    background-color: var(--bg-light);
+    border: 1px dashed var(--accent-purple);
+    padding: 10px;
+}
+
+.form-submit-btn {
+    width: 100%;
+    padding: 16px !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: var(--brand-purple);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-submit-btn:hover {
+    background-color: var(--primary-blue);
+}
+
+/* =========================================
+   6. FOOTER & ALERTS
+   ========================================= */
+footer { 
+    background-color: var(--primary-blue); 
+    color: var(--white); 
+    padding: 30px; 
+    text-align: center; 
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-logo-img {
+    height: 55px; /* Slightly smaller for better balance */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    transform: rotate(5deg) scale(1.05); /* Fun little interactive pop */
+}
+
+/* The Vertical Divider */
+.logo-divider {
+    width: 2px;
+    height: 40px;
+    background-color: #eee; /* Subtle light gray */
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* "AAGAAZ" - Big, Bold, and Purple */
+.brand-name {
+    color: var(--brand-purple);
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+/* "Charitable Trust" - Small, Spaced out, and Navy */
+.brand-suffix {
+    color: var(--primary-blue);
+    font-size: 0.65rem; /* Much smaller for aesthetics */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3.5px; /* Wide spacing looks very premium */
+    margin-top: 4px;
+    opacity: 0.8; /* Makes it look sophisticated */
+}
+
+/* =========================================
+   7. LANGUAGE TOGGLE STYLING
+   ========================================= */
+/* =========================================
+   7. LANGUAGE TOGGLE STYLING (THE SHADOW FIX)
+   ========================================= */
+.custom-lang-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+/* Hide the actual Google widget but keep it functional */
+#google_translate_element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden; /* Keeps it in the HTML but hides it from view */
+    opacity: 0;
+}
+
+/* Style our fake button to match your brand */
+#lang-toggle-btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: 2px solid var(--brand-purple);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+#lang-toggle-btn:hover {
+    background-color: var(--brand-purple);
+}
+
+/* Force hide the Google Bar at the top */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0px !important; }
+
+/* Fix for the Clickable Logo */
+.logo-link {
+    text-decoration: none !important; /* Removes underlines */
+    display: flex;
+    align-items: center;
+    color: inherit;
+}
+
+.logo-link:hover {
+    opacity: 0.85; /* Subtle feedback so users know it's a link */
+}
+
+/* Ensure brand colors don't change */
+.brand-name { color: var(--brand-purple) !important; }
+.brand-suffix { color: var(--primary-blue) !important; }
+
+/* Remove the tiny ghost tile and Google attribution */
+.goog-te-spinner-pos, 
+.goog-te-spinner, 
+.goog-te-balloon-frame, 
+#goog-gt-tt, 
+.goog-te-balloon-text, 
+.goog-te-menu-value img {
+    display: none !important;
+}
+
+/* Specifically target the small iframe/tile that appears above the menu */
+iframe.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
+
+/* This targets the specific "Select Language" text Google might be trying to show */
+#google_translate_element {
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+}
+
+/* KILL THE GOOGLE HIGHLIGHT TILE */
+font.goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    display: inline !important;
+}
+
+/* Ensure the logo link doesn't create a clickable 'box' over other elements */
+.logo-link {
+    display: inline-flex !important;
+    z-index: 10;
+}
+/* ... [KEEP SECTIONS 1 THROUGH 7 EXACTLY AS THEY ARE] ... */
+
+/* =========================================
+   8. FINAL MASTER FOOTER STYLING
+   ========================================= */
+.main-footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 60px 20px 30px;
+    margin-top: 50px;
+}
+
+.footer-inner-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+/* Brand Section - Centered */
+.footer-brand { 
+    flex: 1.5; 
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+
+.footer-logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Specific Footer Classes to prevent clash with Navbar */
+.f-brand-name {
+    color: var(--white) !important;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 1px;
+    font-family: var(--font-heading);
+}
+
+.f-brand-suffix {
+    color: var(--accent-gold) !important;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: block;
+    margin-top: 8px;
+}
+
+.footer-tagline {
+    color: #cbd5e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+/* Links Section */
+.footer-links { flex: 1; min-width: 150px; }
+.footer-links h4 {
+    color: var(--accent-gold);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 12px; }
+.footer-links ul li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-links ul li a:hover { color: var(--white); padding-left: 5px; }
+
+/* Contact Section - Hard Left Aligned */
+/* Column 3: Contact Section Fix */
+.footer-contact { 
+    flex: 1; 
+    min-width: 220px; 
+    display: flex;
+    justify-content: flex-start; /* Ensures the box itself stays left */
+}
+
+.contact-align-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Forces vertical alignment for title, email, and icons */
+    text-align: left;
+    gap: 15px; /* Consistent spacing between all items */
+}
+
+.footer-contact h4 {
+    color: var(--accent-gold);
+    margin-bottom: 5px; /* Reduced to use the gap instead */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.footer-email {
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.social-btn {
+    background: var(--secondary-blue);
+    color: var(--white);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--brand-purple);
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background: var(--brand-purple);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #a0aec0;
+}
+
+/* --- Fancy Program Icons --- */
+.program-icon-box {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.program-icon-box i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.bg-purple { background-color: var(--brand-purple); }
+.bg-navy { background-color: var(--primary-blue); }
+
+/* Keep cards tidy with icons */
+.program-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px;
+    height: 100%; /* Ensures all cards in a row are same height */
+    transition: 0.3s;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.program-card:hover .program-icon-box {
+    transform: scale(1.1);
+}
+
+.cta-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--brand-purple);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cta-link:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+    transform: translateX(5px); /* Tiny nudge effect */
+}

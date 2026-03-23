@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="contact-container">
+        <div class="contact-info">
+            <h1>Get in Touch</h1>
+            <p>Have questions about our vocational courses or community programs? Reach out to us!</p>
+            <div class="info-item">
+                <strong>📍 Address:</strong>
+                <p>AAGAAZ Charitable Trust, New Delhi, India</p>
+            </div>
+            <div class="info-item">
+                <strong>📞 Phone:</strong>
+                <p>+91 9177523251</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Which program are you interested in?</label>
+                    <select name="program">
+                        <option>Stitching & Tailoring</option>
+                        <option>Beautician Course</option>
+                        <option>Education/Tuition</option>
+                        <option>General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="5" placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

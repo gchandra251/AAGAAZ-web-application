@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="hero" style="height: 300px;">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Pitch In</h1>
+                <p>Support AAGAAZ in making a lasting difference.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="program-section">
+        <div class="program-grid">
+            <div class="program-card">
+                <div class="program-icon-box bg-navy"><i class="fas fa-donate"></i></div>
+                <h3>Donate</h3>
+                <p>Your contributions directly fund our vocational training and tuition classes for underprivileged students.</p>
+                <a href="#" class="cta-link">View Bank Details →</a>
+            </div>
+
+            <div class="program-card">
+                <div class="program-icon-box bg-purple"><i class="fas fa-hands-helping"></i></div>
+                <h3>Volunteer</h3>
+                <p>Share your skills! We are always looking for guest teachers, art instructors, and community organizers.</p>
+                <a href="{% url 'apply' %}" class="cta-link">Apply Now →</a>
+            </div>
+
+            <div class="program-card">
+                <div class="program-icon-box bg-purple"><i class="fas fa-user-graduate"></i></div>
+                <h3>Internship</h3>
+                <p>Looking for field expirience in social work or non-profit management? Join our intership program.</p>
+                <a href="{% url 'apply' %}" class="cta-link">Apply now →</a>
+            </div>
+
+            <div class="program-card">
+                <div class="program-icon-box bg-navy"><i class="fas fa-buiding"></i></div>
+                <h3>Corporate Partnership</h3>
+                <p>Align your CSR goals with our mission. Let's build sustainable community projects together.</p>
+                <a href="{% url 'contact' %}" class="cta-link">Get in Touch →</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

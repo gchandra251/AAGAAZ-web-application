@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAGAAZ Charitable Trust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.2">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'index' %}" class="logo-link">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="AAGAAZ logo" class="nav-logo-img">
+                <div class="logo-divider"></div>
+                <div class="brand-text">
+                    <span class="brand-name">AAGAAZ</span>
+                    <span class="brand-suffix">Charitable Trust</span>
+                </div>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a></li>
+            <li><a href="{% url 'what_we_do' %}" class="{% if request.resolver_match.url_name == 'what_we_do' %}active{% endif %}">What we do</a></li>
+            <li><a href="#">Impact</a></li>
+            <li><a href="{% url 'pitch_in' %}" class="{% if request.resolver_match.url_name == 'pitch_in'%}active{% endif %}">Pitch In</a></li>
+            <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact us</a></li>
+            <li><a href="{% url 'pitch_in' %}" class="nav-donate-btn">Donate Now</a></li>
+            <li class="custom-lang-container">
+                <button id="lang-toggle-btn" onclick="toggleLanguage()">HI / EN 🌐</button>
+            </li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="main-footer">
+        <div class="footer-inner-container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo-box">
+                        <span class="f-brand-name">AAGAAZ</span>
+                        <span class="f-brand-suffix">Charitable Trust</span>
+                    </div>
+                    <p class="footer-tagline">Empowering communities through collective action and sustainable change.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'what_we_do' %}">What We Do</a></li>
+                        <li><a href="#">Impact</a></li>
+                        <li><a href="{% url 'pitch_in' %}">Pitch In</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="contact-align-box">
+                        <h4>Stay connected</h4>
+                        <a href="mailto:contact@aagaaz.org" class="footer-email">contact@aagaaz.org</a>
+                        <div class="social-icons">
+                            <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-btn" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Powered by AAGAAZ Charitable Trust</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        function toggleLanguage() {
+            var fullCookie = document.cookie;
+            var isHindi = fullCookie.includes('/en/hi');
+            document.cookie = isHindi ? "googtrans=/en/en; path=/" : "googtrans=/en/hi; path=/";
+            location.reload();
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div id="google_translate_element" style="display:none;"></div>
+</body>
+</html>
