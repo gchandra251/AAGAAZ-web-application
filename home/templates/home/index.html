@@ -13,28 +13,16 @@
     </header>
 
     <section class="activities">
-        <div class="card">
-            <div class="card-header">
-                <h3>Community Programs</h3>
+        {% for activity in activities %}
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{ activity.title }}</h3>
+                </div>
+                <p>{{ activity.description }}</p>
+                <div class="image-placeholder">Image Here</div>
             </div>
-            <p>AAGAAZ Charitable Trust is a pioneer in bringing communities together, ensuring change.</p>
-            <div class="image-placeholder">Image Here</div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Education & Skill Development</h3>
-            </div>
-            <p>Focus on opportunities and training activities to support communities.</p>
-            <div class="image-placeholder">Image Here</div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Women's Vocational Training</h3>
-            </div>
-            <p>Empowering women through skill development for economic independence.</p>
-            <div class="image-placeholder">Image Here</div>
-        </div>
+        {% empty %}
+            <p style="text-align: center; grid-column: 1 / -1;">No activities found. Add some in the Admin panel!</p>
+        {% endfor %}
     </section>
 {% endblock %}

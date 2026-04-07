@@ -8,15 +8,26 @@
             <p>Have questions about our vocational courses or community programs? Reach out to us!</p>
             <div class="info-item">
                 <strong>📍 Address:</strong>
-                <p>AAGAAZ Charitable Trust, New Delhi, India</p>
+                <p>{{ info.address }}</p>
             </div>
             <div class="info-item">
                 <strong>📞 Phone:</strong>
-                <p>+91 9177523251</p>
+                <p>{{ info.phone }}</p>
+            </div>
+            <div class="info-itmes">
+                <strong>✉️ Email:</strong>
+                <p>{{ info.email }}</p>
             </div>
         </div>
 
         <div class="contact-form">
+            {% if messages %}
+                {% for message in messages %}
+                    <div style="padding: 15px; background-color: #d4eedda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 20px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
