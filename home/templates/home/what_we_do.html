@@ -2,88 +2,116 @@
 {% load static %}
 
 {% block content %}
-    <header class="hero" style="height: 300px;">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Our Programs</h1>
-                <p>Empowering communities through dedicated action.</p>
+    <!-- 1. Dynamic Hero Slider Architecture -->
+    <header class="hero" style="position: relative; height: 300px; overflow: hidden; padding-left: 0;">
+        <div class="hero-slider" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            {% for slide in slides %}
+                <div class="hero-slide fade" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ slide.image.url }}'); background-size: cover; background-position: center; display: none;"></div>
+            {% empty %}
+                <div class="hero-slide fade" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #666666; display: none;"></div>
+            {% endfor %}
+        </div>
+
+        <div class="hero-overlay" style="position: relative; z-index: 2; width: 100%; height: 100%; display: flex; align-items: center; padding-left: 80px; background: linear-gradient(to right, rgba(13, 27, 42, 0.9) 0%, rgba(13, 27, 42, 0.3) 100%);">
+            <div class="hero-content" style="color: #ffffff; max-width: 600px;">
+                <h1 style="color: #ffffff;">Our Programs</h1>
+                <p style="color: #ffffff;">Empowering communities through dedicated action.</p>
             </div>
         </div>
     </header>
 
-<section class="program-section">
-    <h2 class="section-title">Community Programs</h2>
-    <div class="program-grid">
-        <div class="program-card">
-            <div class="program-icon-box bg-purple">
-                <i class="fas fa-users"></i>
-            </div>
-            <h3>Self Help Groups (SHG)</h3>
-            <p>Organizing local groups to foster economic independence and mutual support.</p>
+    <section class="program-section">
+        <!-- 2. Community Programs -->
+        <h2 class="section-title">Community Programs</h2>
+        <div class="program-grid">
+            {% for program in community_programs %}
+                <div class="program-card">
+                    {% if program.image %}
+                        <img src="{{ program.image.url }}" alt="{{ program.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    {% else %}
+                        <div class="program-icon-box bg-purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <h3>{{ program.title}}</h3>
+                    <p>{{ program.description }}</p>
+                </div>
+            {% empty %}
+                <p style="text-align: center; width: 100%;">New programs coming soon.</p>
+            {% endfor %}
         </div>
-        <div class="program-card">
-            <div class="program-icon-box bg-navy">
-                <i class="fas fa-hands-helping"></i>
-            </div>
-            <h3>NYKS Collaboration</h3>
-            <p>Working with Nehru Yuva Kendra Sangathan for youth-led community development.</p>
-        </div>
-    </div>
 
-    <h2 class="section-title">Vocational Training</h2>
-    <div class="program-grid">
-        <div class="program-card">
-            <div class="program-icon-box bg-navy">
-                <i class="fas fa-cut"></i>
-            </div>
-            <h3>Stitching & Tailoring</h3>
-            <p>Learn professional garment making to start your own business.</p>
+        <!-- 3. Vocational Training -->
+        <h2 class="section-title">Vocational Training</h2>
+        <div class="program-grid">
+            {% for program in vocational_programs %}
+                <div class="program-card">
+                    {% if program.image %}
+                        <img src="{{ program.image.url }}" alt="{{ program.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    {% else %}
+                        <div class="program-icon-box bg-navy">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <h3>{{ program.title }}</h3>
+                    <p>{{ program.description }}</p>
+                </div>
+            {% empty %}
+                <p style="text-align: center; width: 100%;">Updates in progress.</p>
+            {% endfor %}
+        </div>   
+        
+        <!-- 4. Education & Skills (Hardcoding Repaired) -->
+        <h2 class="section-title">Education & Skills</h2>
+        <div class="program-grid">
+            {% for program in education_programs %}
+                <div class="program-card">
+                    {% if program.image %}
+                        <img src="{{ program.image.url }}" alt="{{ program.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    {% else %}
+                        <div class="program-icon-box bg-purple">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <h3>{{ program.title }}</h3>
+                    <p>{{ program.description }}</p>
+                </div>
+            {% empty %}
+                <p style="text-align: center; width: 100%;">Check back soon for new courses.</p>
+            {% endfor %}
         </div>
-        <div class="program-card">
-            <div class="program-icon-box bg-purple">
-                <i class="fas fa-magic"></i>
-            </div>
-            <h3>Beautician Course</h3>
-            <p>Comprehensive training in skin care and hair styling.</p>
-        </div>
-        <div class="program-card">
-            <div class="program-icon-box bg-purple">
-                <i class="fas fa-pencil-ruler"></i>
-            </div>
-            <h3>Dress Designing</h3>
-            <p>Master the art of designing dresses, learn the skill to translate ideas into reality.</p>
-        </div>
-        <div class="program-card">
-            <div class="program-icon-box bg-navy">
-                <i class="fas fa-paint-brush"></i>
-            </div>
-            <h3>Henna Art</h3>
-            <p>Learn the traditional and contemporary henna design techniques.</p>
-        </div>
-    </div>
 
-    <h2 class="section-title">Education & Skills</h2>
-    <div class="program-grid">
-        <div class="program-card">
-            <div class="program-icon-box bg-purple">
-                <i class="fas fa-music"></i>
-            </div>
-            <h3>Cultural Dance</h3>
-            <p>Preserving heritage and building confidence through traditional, contemporary and modern dance forms.</p>
+        <div class="enrollment-cta">
+            <p>To have more information about the courses, fees and enrollment process please 
+               <a href="{% url 'contact' %}" class="cta-link">contact us</a>.
+            </p>
         </div>
-        <div class="program-card">
-            <div class="program-icon-box bg-navy">
-                <i class="fas fa-book-open"></i>
-            </div>
-            <h3>Tuition Classes</h3>
-            <p>Providing quality education through tuitions for student in primary standard</p>
-        </div>
-    </div>
+    </section>
 
-    <div class="enrollment-cta">
-        <p>To have more information about the courses, fees and enrollment process please 
-           <a href="{% url 'contact' %}" class="cta-link">contact us</a>.
-        </p>
-    </div>
-</section>
+    <!-- 5. Slider JavaScript Execution -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let heroSlideIndex = 0;
+            showHeroSlides();
+
+            function showHeroSlides() {
+                let slides = document.getElementsByClassName("hero-slide");
+                if (slides.length === 0) return; 
+                
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                
+                heroSlideIndex++;
+                if (heroSlideIndex > slides.length) {heroSlideIndex = 1}
+                
+                slides[heroSlideIndex-1].style.display = "block";
+                
+                setTimeout(showHeroSlides, 5000); 
+            }
+        });
+    </script>
 {% endblock %}

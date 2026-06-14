@@ -2,27 +2,122 @@
 {% load static %}
 
 {% block content %}
-    <header class="hero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Our Core Activities & Impact</h1>
-                <p>AAGAAZ Charitable Trust is a pioneer in the mission to empowering community development projects and everyone's development.</p>
-                <a href="#" class="btn-primary">Learn more</a>
+
+    <header class="hero" style="position: relative; height: 400px; overflow: hidden; padding-left: 0;">
+        <div class="hero-slider" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            {% for slide in slides %}
+                <div class="hero-slide fade" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ slide.image.url }}'); background-size: cover; background-position: center; display: none;"></div>
+            {% empty %}
+                <div class="hero-slide fade" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #666666; display: none;"></div>
+            {% endfor %}
+        </div>  
+
+        <div class="hero-overlay" style="position: relative; z-index: 2; width: 100%; height: 100%; display: flex; align-items: center; padding-left: 80px; background: linear-gradient(to right, rgba(13, 27, 42, 0.9) 0%, rgba(13, 27, 42, 0.3) 100%);">
+            <div class="hero-content" style="color: #ffffff; max-width: 600px;">
+                <h1 style="color: #ffffff; font-size: 2.5rem; margin-bottom: 15px;">Our Core Activities & Impact</h1>
+                <p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 20px;">AAGAAZ Charitable Trust is walking towards the mission to empower community development projects and drive collective growth.</p>
+                <a href="{% url 'what_we_do' %}" class="btn-primary" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Learn more</a>
             </div>
         </div>
     </header>
 
-    <section class="activities">
-        {% for activity in activities %}
-            <div class="card">
-                <div class="card-header">
-                    <h3>{{ activity.title }}</h3>
-                </div>
-                <p>{{ activity.description }}</p>
-                <div class="image-placeholder">Image Here</div>
-            </div>
-        {% empty %}
-            <p style="text-align: center; grid-column: 1 / -1;">No activities found. Add some in the Admin panel!</p>
-        {% endfor %}
+    <section style="max-width: 800px; margin: 60px auto; text-align: center; padding: 0 20px;">
+        <h2 style="color: #0d1b2a; margin-bottom: 20px;">Building a Better Tomorrow</h2>
+        <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+            At AAGAAZ, we believe that sustainable change starts from the ground up. By providing essential vocational training, quality educational support, and mobilizing community resources, we are building pathways for individuals to achieve financial independence and social empowerment.
+        </p>
     </section>
+
+    <section style="background-color: #f4f4f9; padding: 50px 20px; margin-bottom: 60px;">
+        <div style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;">
+            <div style="flex: 1; min-width: 200px; margin: 15px;">
+                <i class="fas fa-user-graduate" style="font-size: 3rem; color: #0d1b2a; margin-bottom: 15px;"></i>
+                <h3 style="font-size: 2.5rem; color: #0d1b2a; margin: 0;">1000+</h3>
+                <p style="color: #666; font-weight: bold;">Students Educated</p>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin: 15px;">
+                <i class="fas fa-hands-helping" style="font-size: 3rem; color: #6a0dad; margin-bottom: 15px;"></i>
+                <h3 style="font-size: 2.5rem; color: #6a0dad; margin: 0;">20+</h3>
+                <p style="color: #666; font-weight: bold;"> Folks Volunteered and Interned </p>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin: 15px;">
+                <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: #0d1b2a; margin-bottom: 15px;"></i>
+                <h3 style="font-size: 2.5rem; color: #0d1b2a; margin: 0;">10+</h3>
+                <p style="color: #666; font-weight: bold;">Communities Reached</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CORE ACTIVITIES (Fixed: Layout & Field Names) -->
+    <section style="max-width: 1200px; margin: 0 auto 60px auto; padding: 0 20px;">
+        <h2 style="text-align: center; color: #0d1b2a; margin-bottom: 40px; width: 100%;">Our Core Activities</h2>
+        
+        <div style="display: flex; flex-direction: row; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            {% for activity in activities %}
+                <div class="card" style="display: flex; flex-direction: column; flex: 1; min-width: 280px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <div class="card-header" style="background-color: #0d1b2a; color: white; padding: 15px; text-align: center;">
+                        <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff !important;">{{ activity.title }}</h3>
+                    </div>
+                    <div style="padding: 20px; flex-grow: 1;">
+                        <p style="color: #555; margin: 0;">{{ activity.description }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p style="text-align: center; width: 100%;">No activities found. Add some in the Admin panel!</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section style="background-color: #6a0dad; color: white; padding: 60px 20px; text-align: center;">
+        <h2 style="margin-bottom: 20px; color: white;">Ready to Make a Difference?</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px auto; font-size: 1.1rem; line-height: 1.5;">
+            Whether you want to donate towards our vocational training programs, or volunteer your time as an instructor, your contribution directly impacts lives.
+        </p>
+        <div>
+            <a href="{% url 'pitch_in' %}" style="display: inline-block; background-color: white; color: #6a0dad; padding: 12px 25px; margin: 10px; text-decoration: none; font-weight: bold; border-radius: 4px;">Donate Now</a>
+            <a href="{% url 'contact' %}" style="display: inline-block; border: 2px solid white; color: white; padding: 10px 25px; margin: 10px; text-decoration: none; font-weight: bold; border-radius: 4px;">Contact Us</a>
+        </div>
+    </section>
+
+    <section style="max-width: 1000px; margin: 60px auto; padding: 0 20px;">
+        <h2 style="text-align: center; color: #0d1b2a; margin-bottom: 40px;">Voices of Impact</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            {% for testimonial in testimonials %}
+                <div style="background: #fff; padding: 25px; border-radius: 8px; border-left: 5px solid {% cycle '#0d1b2a' '#6a0dad' %}; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <p style="font-style: italic; color: #555; margin-bottom: 15px;">"{{ testimonial.quote }}"</p>
+                    <h4 style="margin: 0; color: #0d1b2a;">
+                        — {{ testimonial.author }}
+                        {% if testimonial.role %}
+                            <span style="font-size: 0.9em; color: #666; font-weight: normal;"> | {{ testimonial.role }}</span>
+                        {% endif %}
+                    </h4>
+                </div>
+            {% empty %}
+                <p style="text-align: center; grid-column: 1 / -1;">Impact stories coming soon.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let heroSlideIndex = 0;
+            showHeroSlides();
+
+            function showHeroSlides() {
+                let slides = document.getElementsByClassName("hero-slide");
+                if (slides.length === 0) return; 
+                
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                
+                heroSlideIndex++;
+                if (heroSlideIndex > slides.length) {heroSlideIndex = 1}
+                
+                slides[heroSlideIndex-1].style.display = "block";
+                
+                setTimeout(showHeroSlides, 5000); 
+            }
+        });
+    </script>
 {% endblock %}

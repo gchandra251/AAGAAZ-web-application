@@ -1,0 +1,109 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<section class="about-hero bg-navy text-white">
+    <div class="container">
+        <h1>About Aagaaz Trust</h1>
+        <p class="lead">From a small spark to a community movement.</p>
+    </div>
+</section>
+
+<section class="story-section">
+    <div class="container">
+        <div class="story-grid">
+            <div class="story-content">
+                <h2 class="section-title">The Aagaaz Journey</h2>
+                <div class="emotional-text">
+                    {{ story.story_text|linebreaks}}
+                </div>
+            </div>
+            <div class="story-image">
+                <div class="slideshow-container" style="width: 100%; max-width: 600px; margin: auto; position: relative;">
+                    
+                    {% for item in gallery %}
+                        <div class="mySlides fade" style="width: 100%; height: 400px; overflow: hidden; border-radius: 20px;">
+                            <img src="{{ item.image.url }}" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block;" class="main-story-img" alt="Gallery Image">
+                        </div>
+                    
+                    {% empty %}
+                        <div class="mySlides fade" style="width: 100%; height: 400px; overflow: hidden; border-radius: 20px;">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block;" class="main-story-img" alt="Default Journey Image">
+                        </div>
+                    {% endfor %} 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team-section bg-light">
+    <div class = "container">
+        <h2 class="section-title">Our Founders</h2>
+        <div class="founder-grid">
+            {% for founder in founders %}
+            <div class="founder-card">
+                {% if founder.image %}
+                    <img src="{{ founder.image.url }}" alt="{{ founder.name }}" class="profile-pic">
+                {% endif %}
+
+                <h3>{{ founder.name }}</h3>
+                <p class="role">Founding Member</p>
+                {% if founder.email %}<p class="email">{{ founder.email }}</p>{% endif %}
+                <p>{{ founder.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Teachers/Staff Section -->
+<section class="team-section">
+    <div class="container">
+        <h2 class="section-title">The Hands Behind the Work</h2>
+        <div class="teacher-grid">
+            {% for teacher in teachers %}
+            <div class="teacher-card">
+                <div class="teacher-info">
+                    {% if teacher.image %}
+                        <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}" class="profile-pic">
+                    {% endif %}
+
+                    <h3>{{ teacher.name }}</h3>
+                    {% if teacher.bio %}
+                        <p class="teacher-role">{{ teacher.bio }}</p>
+                    {% else %}
+                        <p class="teacher-role">Staff Member</p>
+                    {% endif %}
+                    
+                    {% if teacher.email %}
+                        <p class="teacher-email"><i class="fas fa-envelope"></i> {{ teacher.email }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+</script>
+
+{% endblock %}
+
+        
+

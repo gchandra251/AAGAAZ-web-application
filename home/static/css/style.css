@@ -627,3 +627,234 @@ font.goog-text-highlight {
     text-decoration: underline;
     transform: translateX(5px); /* Tiny nudge effect */
 }
+
+/* About Page Styling */
+.about-hero {
+    background-color: #1a237e; /* deep navy from the header */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.story-section {
+    padding: 80px 10%;
+    background-color: #ffffff;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.section-title {
+    color: #6a1b9a; /* purple brand color */
+    font-family: 'poppins', sans-serif;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.emotional-text {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Founder Cards */
+.team-section {
+    padding: 60px 10%;
+    background-color: #f8f9fa;
+}
+
+.founder-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.founder-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0,.05);
+    text-align: center;
+    width: 300px;
+}
+
+.founder-card h3 {
+    margin-bottom: 5px;
+    color: #1a237e;
+}
+
+.role {
+    color: #6a1b9a;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* teacher Tags */
+.teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.teacher-tag {
+    background: #e1bee7;
+    color: #4a148c;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.designation {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-left: 5px;
+}
+
+/* Teacher Grid & Cards */
+.teacher-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.teacher-card {
+    background: #ffffff;
+    border-left: 5px solid #6a1b9a; /* A nice purple accent border */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 260px; /* Slightly narrower than founders */
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px); /* Adds a subtle lift on hover */
+}
+
+.teacher-card h3 {
+    margin: 0 0 5px 0;
+    color: #1a237e;
+    font-size: 1.2rem;
+}
+
+.teacher-role {
+    color: #6a1b9a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.teacher-email {
+    font-size: 0.85rem;
+    color: #666;
+    word-break: break-all; /* Prevents long emails from breaking the card */
+    display: flex;         /* Add this */
+    align-items: center;   /* Add this */
+    gap: 8px;              /* Add this */
+    justify-content: center; /* Add this if you want them centered like founders */
+}
+
+/* Bulletproof Profile Image Styling */
+.profile-pic {
+    width: 140px;             /* Fixed width */
+    height: 140px;            /* Fixed height (must match width) */
+    object-fit: cover;        /* CROP instead of SQUISH */
+    object-position: center;  /* Keep the face in the middle */
+    border-radius: 50%;       /* Perfect circle */
+    border: 4px solid #6a1b9a;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Centers the content in the cards */
+.founder-card, .teacher-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* =========================================
+   10. HOMEPAGE BACKGROUND SLIDER
+   ========================================= */
+
+.hero {
+    height: 500px;
+    position: relative;
+    overflow: hidden; /* Keeps the images locked inside the box */
+    padding-left: 0;  /* Resetting this so the overlay handles it */
+}
+
+/* The images themselves */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Puts the images in the back */
+}
+
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;    /* Crops the image perfectly */
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* The dark tint & text container */
+.hero-overlay {
+    position: relative;
+    z-index: 2; /* Puts the text IN FRONT of the images */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    /* This creates a smooth dark shadow fading from left to right so text is readable */
+    background: linear-gradient(to right, rgba(13, 27, 42, 0.9) 0%, rgba(13, 27, 42, 0.3) 100%);
+}
+
+.hero-content {
+    color: var(--white);
+    max-width: 600px;
+}

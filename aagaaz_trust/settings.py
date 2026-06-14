@@ -59,9 +59,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'home.context_processors.global_contact_info',
             ],
         },
     },
@@ -120,3 +122,5 @@ import os
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'home/static'),
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
